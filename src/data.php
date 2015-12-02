@@ -1,34 +1,35 @@
 <?php
 namespace Meanbee;
 
-/**
- * NOTICE OF LICENSE
- *
- * This source file is subject to the Open Software License (OSL 3.0)
- * that is bundled with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://opensource.org/licenses/osl-3.0.php
- *
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to support@meanbee.com so we can send you a copy immediately.
- *
- * @category   Meanbee
- * @package    Meanbee_Royalmail
- * @copyright  Copyright (c) 2008 Meanbee Internet Solutions (http://www.meanbee.com)
- * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
- */
+    /**
+     * NOTICE OF LICENSE
+     *
+     * This source file is subject to the Open Software License (OSL 3.0)
+     * that is bundled with this package in the file LICENSE.txt.
+     * It is also available through the world-wide-web at this URL:
+     * http://opensource.org/licenses/osl-3.0.php
+     *
+     * If you did not receive a copy of the license and are unable to
+     * obtain it through the world-wide-web, please send an email
+     * to support@meanbee.com so we can send you a copy immediately.
+     *
+     * @category   Meanbee
+     * @package    Royalmail-PHP-Library
+     * @copyright  Copyright (c) 2015 Meanbee Internet Solutions (http://www.meanbee.com)
+     * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+     */
 
-define('DOCUMENT_ROOT_1', dirname(realpath(__FILE__)) . '/');
+// Constant to define the default document root
+define('DOCUMENT_ROOT', dirname(realpath(__FILE__)) . '/');
 
 class data
 {
-    // Locations of the csv files used
-    protected $_csvCountryCode =  DOCUMENT_ROOT_1 .'../data/1_countryToZone.csv';
-    protected $_csvZoneToDeliverMethod =  DOCUMENT_ROOT_1 .'../data/2_zoneToDeliveryMethod.csv';
-    protected $_csvDeliveryMethodMeta =  DOCUMENT_ROOT_1 .'../data/3_deliveryMethodMeta.csv';
-    protected $_csvDeliveryToPrice =  DOCUMENT_ROOT_1 .'../data/4_deliveryToPrice.csv';
 
+    // Locations of the csv files used
+    protected $_csvCountryCode = DOCUMENT_ROOT . '../data/1_countryToZone.csv';
+    protected $_csvZoneToDeliverMethod = DOCUMENT_ROOT . '../data/2_zoneToDeliveryMethod.csv';
+    protected $_csvDeliveryMethodMeta = DOCUMENT_ROOT . '../data/3_deliveryMethodMeta.csv';
+    protected $_csvDeliveryToPrice = DOCUMENT_ROOT . '../data/4_deliveryToPrice.csv';
 
     // 1st array used, stores the csv of country to zone
     public $mappingCountryToZone = array();
@@ -45,7 +46,6 @@ class data
     // to the weight and price
     public $mappingDeliveryToPrice = array();
 
-
     function __construct()
     {
         $this->mappingCountryToZone = $this->csvToArray($this->_csvCountryCode);
@@ -55,7 +55,7 @@ class data
     }
 
     /**
-     * Reads the csv given csv in to a 2d array
+     * Reads the given csv in to a 2d array
      *
      * @param string $filename
      * @param string $delimiter
@@ -67,7 +67,7 @@ class data
     {
         if (!file_exists($filename) || !is_readable($filename)) {
             throw new \Exception("Unable to load the Royal Mail price data csv for '$filename'.
-            Ensure that the app/ directory is in your include path.");
+            Ensure that the data folder contains all the necessary csvs.");
         }
 
         $header = null;

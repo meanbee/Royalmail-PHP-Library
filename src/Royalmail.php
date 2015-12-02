@@ -13,8 +13,8 @@
  * to support@meanbee.com so we can send you a copy immediately.
  *
  * @category   Meanbee
- * @package    Meanbee_Royalmail
- * @copyright  Copyright (c) 2008 Meanbee Internet Solutions (http://www.meanbee.com)
+ * @package    Royalmail-PHP-Library
+ * @copyright  Copyright (c) 2015 Meanbee Internet Solutions (http://www.meanbee.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 require_once("data.php");
@@ -158,7 +158,6 @@ class RoyalMail
         $mappingZoneData = array_values($mappingZoneData);
 
         return $mappingZoneData;
-
     }
 
     /**
@@ -193,7 +192,6 @@ class RoyalMail
         $mappingZoneMethodData = array_values($mappingZoneMethodData);
 
         return $mappingZoneMethodData;
-
     }
 
     /**
@@ -233,6 +231,5 @@ class RoyalMail
         $mappingDeliveryToPriceData = array_values($mappingDeliveryToPriceData);
 
         return $mappingDeliveryToPriceData;
-
     }
 }

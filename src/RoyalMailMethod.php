@@ -13,8 +13,8 @@
  * to support@meanbee.com so we can send you a copy immediately.
  *
  * @category   Meanbee
- * @package    Meanbee_Royalmail
- * @copyright  Copyright (c) 2008 Meanbee Internet Solutions (http://www.meanbee.com)
+ * @package    Royalmail-PHP-Library
+ * @copyright  Copyright (c) 2015 Meanbee Internet Solutions (http://www.meanbee.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 class RoyalMailMethod
@@ -49,12 +49,8 @@ class RoyalMailMethod
 
                     $results[] = $method;
                 }
-
             }
         }
-
         return $results;
     }
-
 }
-
