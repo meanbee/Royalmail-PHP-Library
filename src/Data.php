@@ -1,4 +1,4 @@
-<?php namespace Meanbee\RoyalMail;
+<?php namespace Meanbee\Royalmail;
 
 class Data
 {
