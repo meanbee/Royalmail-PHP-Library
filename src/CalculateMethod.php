@@ -2,28 +2,31 @@
 
 class CalculateMethod
 {
-
-    // Helper document root
-    public $documentRoot;
-
     public $_csvCountryCode;
-    public $_csvZoneToDeliverMethod;
+    public $_csvZoneToDeliveryMethod;
     public $_csvDeliveryMethodMeta;
     public $_csvDeliveryToPrice;
     public $_csvCleanNameToMethod;
     public $_csvCleanNameMethodGroup;
 
-    public function __construct()
+    public function __construct($csvCountryCode = null, $csvZoneToDeliveryMethod = null, $csvDeliveryMethodMeta = null,
+                                $csvDeliveryToPrice = null, $csvCleanNameToMethod = null,
+                                $csvCleanNameMethodGroup = null)
     {
-        $this->getDocumentRoot();
+        $dir = dirname(realpath(__FILE__)) . '/';
 
         // Set the default csv values
-        $this->_csvCountryCode = $this->documentRoot . '../data/1_countryToZone.csv';
-        $this->_csvZoneToDeliverMethod = $this->documentRoot . '../data/2_zoneToDeliveryMethod.csv';
-        $this->_csvDeliveryMethodMeta = $this->documentRoot . '../data/3_deliveryMethodMeta.csv';
-        $this->_csvDeliveryToPrice = $this->documentRoot . '../data/4_deliveryToPrice.csv';
-        $this->_csvCleanNameToMethod = $this->documentRoot . '../data/5_cleanNameToMethod.csv';
-        $this->_csvCleanNameMethodGroup = $this->documentRoot . '../data/6_cleanNameMethodGroup.csv';
+        $this->_csvCountryCode = isset($csvCountryCode) ? $csvCountryCode : $dir . '../data/1_countryToZone.csv';
+        $this->_csvZoneToDeliveryMethod = isset($csvZoneToDeliveryMethod) ? $csvZoneToDeliveryMethod :
+            $dir . '../data/2_zoneToDeliveryMethod.csv';
+        $this->_csvDeliveryMethodMeta = isset($csvDeliveryMethodMeta) ? $csvDeliveryMethodMeta :
+            $dir . '../data/3_deliveryMethodMeta.csv';
+        $this->_csvDeliveryToPrice = isset($csvDeliveryToPrice) ? $csvDeliveryToPrice :
+            $dir . '../data/4_deliveryToPrice.csv';
+        $this->_csvCleanNameToMethod = isset($csvCleanNameToMethod) ? $csvCleanNameToMethod :
+            $dir . '../data/5_cleanNameToMethod.csv';
+        $this->_csvCleanNameMethodGroup = isset($csvCleanNameMethodGroup) ? $csvCleanNameMethodGroup :
+            $dir . '../data/6_cleanNameMethodGroup.csv';
     }
 
     /**
@@ -43,7 +46,7 @@ class CalculateMethod
     {
         $data = new Data(
             $this->_csvCountryCode,
-            $this->_csvZoneToDeliverMethod,
+            $this->_csvZoneToDeliveryMethod,
             $this->_csvDeliveryMethodMeta,
             $this->_csvDeliveryToPrice,
             $this->_csvCleanNameToMethod,
@@ -65,7 +68,7 @@ class CalculateMethod
                 $method->insuranceValue = $item['insuranceValue'];
                 $method->shippingMethodNameClean = $item['shippingMethodNameClean'];
 
-                if(isset($item['size'])){
+                if (isset($item['size'])) {
                     $method->size = $item['size'];
                 }
 
@@ -73,13 +76,5 @@ class CalculateMethod
             }
         }
         return $results;
-    }
-
-    /**
-     * Helper function to get the document root for csv files
-     */
-    public function getDocumentRoot()
-    {
-        $this->documentRoot = dirname(realpath(__FILE__)) . '/';
     }
 }

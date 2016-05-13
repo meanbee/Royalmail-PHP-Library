@@ -32,7 +32,7 @@ class RoyalmailTest extends \PHPUnit_Framework_TestCase
         $this->calculateMethodClass = new CalculateMethod();
         $this->dataClass = new Data(
             $this->calculateMethodClass->_csvCountryCode,
-            $this->calculateMethodClass->_csvZoneToDeliverMethod,
+            $this->calculateMethodClass->_csvZoneToDeliveryMethod,
             $this->calculateMethodClass->_csvDeliveryMethodMeta,
             $this->calculateMethodClass->_csvDeliveryToPrice,
             $this->calculateMethodClass->_csvCleanNameToMethod,
